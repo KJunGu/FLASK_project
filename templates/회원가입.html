@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>찐찐찐이야 회원가입</title>
+  <style>
+    * {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image:#34495e;
+}
+
+.joinForm {
+  position:absolute;
+  width:400px;
+  height:400px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+.joinForm h2 {
+  text-align: center;
+  margin: 30px;
+}
+
+.textForm {
+  border-bottom: 2px solid #adadad;
+  margin: 30px;
+  padding: 10px 10px;
+}
+
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.name {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.email {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.nickname {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #578ea1;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.cellphoneNo {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.btn {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: linear-gradient(125deg,#0e5353,#1f1953,#0c4747);
+  background-position: left;
+  background-size: 200%;
+  color:rgb(250, 250, 250);
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+.btn:hover {
+  background-position: right;
+}
+  </style>
+</head>
+<body>
+  <form action="/sign-up-proc/" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+                                                                                               
+    <h2>회원가입</h2>
+    <div class="textForm">
+      <input name="NAME" type="text" class="name" required placeholder="이름">
+    </div>
+    <div class="textForm">
+      <input oninvalid="this.setCustomValidity('영어, 숫자를 입력해주세요(6~15)')" 
+      pattern="^([a-z0-9]){6,15}$" name="ID" type="text" class="id" required placeholder="아이디(6~15자)">
+      </input>
+    </div>
+    <div class="textForm">
+      <input pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$" 
+      name="PSW" type="password" class="pw" required placeholder="비밀번호"
+      oninvalid="this.setCustomValidity('대/소문자, 숫자, 특수문자를 입력해주세요(8~15)')">
+    </div>
+     <div class="textForm">
+      <input name="PSW_repeat" type="password" class="pw" required placeholder="비밀번호 확인">
+    </div>
+    
+    <div class="textForm">
+      <input name="EMAIL" type="email" class="email" required placeholder="이메일">
+    </div>
+
+  <div class="textForm">
+    <input name="question" type="text" class = "id" required placeholder="질의문: 당신의 첫사랑은 누구인가요?">
+  </input>
+  </div>
+    <input type="submit" class="btn" value="J O I N"/>
+  </form>
+</body>
+</html>

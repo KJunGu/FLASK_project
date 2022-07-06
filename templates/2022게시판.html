@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>게시판</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="static/css/mdb.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+      <!--Main Navigation-->
+  <header>
+    <!-- Intro settings -->
+    <style>
+      @media (max-width: 991px) {
+        #intro {
+          /* Margin to fix overlapping fixed navbar */
+          margin-top: 45px;
+        }
+      }
+    </style>
+
+<nav class="nav-box" style="z-index: 2000;">
+  <div class="nav-box">
+      <a class="nav-title" href="/">
+      <strong>18WORLD</strong>
+      </a>
+      <a class="nav-item" href="#게시판" rel="nofollow" >게시판</a>
+      {%if session%}
+      <a class="nav-item" href="" rel="nofollow">마이페이지</a>
+      <strong style="position:absolute; right:1%; color:black; margin-top:3px;">{{userid[0][0]}}님 환영합니다  |  <a class="logout-form" href="/logout">LOGOUT</a></strong>
+      {%else%}
+      <a href="/login">
+        <button type="button" class="nav-login">로 그 인</button>
+      </a>
+      {%endif%}
+  </div>
+</nav>
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-center bg-light">
+      <h1 class="mb-3 h2">2022년도 게시판</h1>
+      <!-- <p class="mb-3">Best & free guide of responsive web design</p> -->
+      <!-- <a class="btn btn-primary m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow"
+        target="_blank">Start tutorial</a>
+      <a class="btn btn-primary m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"
+        role="button">Download MDB UI KIT</a> -->
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5">
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-9 mb-4">
+          <!--Section: Content-->
+          <section>
+            <!-- Post -->
+            {% for i in range(len_seq) %}
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="bg-image hover-overlay shadow-1-strong rounded ripple" data-mdb-ripple-color="light">
+                  <img src="../static/images/{{gesi[i][0]}}.jpeg" class="img-fluid" />
+                  <a href="../static/images/{{gesi[i][0]}}.jpeg">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-8 mb-4">
+                <h5>{{gesi[i][1]}}</h5>
+                <p>
+                  {{seq}}
+                  {{gesi[i][2]}} <br>
+                  {{gesi[i][3]}} <br>
+                  {{gesi[i][4]}} <br>
+                  {{i}}
+                  <a href="{{url_for('update', uid=i)}}">수정</a>
+                  <a href="{{url_for('delete', uid=i)}}">삭제</a>
+                </p>        
+
+                <a href="../static/images/{{i+1}}.jpeg">
+                <button type="button" class="btn btn-primary">Read</button>
+                </a>  
+              </div>
+            </div>
+            {% endfor %}
+          </section>
+          <!--Section: Content-->
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 mb-4">
+          <!--Section: Sidebar-->
+          <section class="sticky-top" style="top: 80px;">
+            <!--Section: Ad-->
+            <!-- <section class="text-center border-bottom pb-4 mb-4">
+              <div class="bg-image hover-overlay ripple mb-4">
+                <img
+                  src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
+                  class="img-fluid" />
+                <a href="https://mdbootstrap.com/docs/standard/" target="_blank">
+                  <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                </a>
+              </div>
+              <h5>Material Design for Bootstrap 5</h5>
+
+              <p>
+                500+ components, free templates, 1-min installation, extensive tutorial, huge
+                community. MIT license - free for personal & commercial use
+              </p>
+              <a role="button" class="btn btn-primary" href="https://mdbootstrap.com/docs/standard/"
+                target="_blank">Download for free<i class="fas fa-download ms-2"></i></a>
+            </section> -->
+            <!--Section: Ad-->
+
+            <!--Section: Video-->
+            <!-- <section class="text-center">
+              <h5 class="mb-4">Learn the newest Bootstrap 5</h5>
+
+              <div class="embed-responsive embed-responsive-16by9 shadow-4-strong">
+                <iframe class="embed-responsive-item rounded" src="https://www.youtube.com/embed/c9B4TPnak1A"
+                  allowfullscreen></iframe>
+              </div>
+            </section> -->
+            <!--Section: Video-->
+          <!-- </section> -->
+          <!--Section: Sidebar-->
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+
+      <!-- Pagination -->
+      <nav class="my-4" aria-label="...">
+        <ul class="pagination pagination-circle justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="bg-light text-lg-start">
+    {%if session%}
+    <div class="py-4 text-center">
+      <a role="button" class="btn btn-primary btn-lg m-2"
+        href="/form" rel="nofollow">
+        게시물 작성
+      </a>
+      <!-- <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
+        Download MDB UI KIT
+      </a> -->
+    </div>
+    {%else%}
+    {%endif%}
+
+    <!-- <hr class="m-0" />
+
+    <div class="text-center py-4 align-items-center">
+      <p>Follow MDB on social media</p>
+      <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
+        rel="nofollow" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
+        target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+
+    <!-- Copyright -->
+    <!-- <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div> -->
+    <!-- Copyright -->
+  </footer>
+  <!--Footer-->
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

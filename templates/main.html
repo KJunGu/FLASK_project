@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>응답하라18월드</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/mdb.min.css')}}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <style>
+      .btnn {
+    position:absolute;
+    transform: translateX(-50%);
+    margin-top: 3px;
+    right:1%;
+    height:35px;
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    border: none;
+    background: transparent;
+  }
+    </style>
+</head>
+
+<body>
+      <!--Main Navigation-->
+  <header>
+    <style>
+      /* Carousel styling */
+      #introCarousel,
+      .carousel-inner,
+      .carousel-item,
+      .carousel-item.active {
+        height: 100vh;
+      }
+
+      .carousel-item:nth-child(1) {
+        background-image: url('{{url_for('static', filename='images/test4.PNG')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(2) {
+        background-image: url('{{url_for('static', filename='images/test5.PNG')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .carousel-item:nth-child(3) {
+        background-image: url('{{url_for('static', filename='images/test6.PNG')}}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+      }
+
+
+      /* Height for devices larger than 576px */
+      @media (min-width: 992px) {
+        #introCarousel {
+          margin-top: -58.59px;
+        }
+      }
+
+      .navbar .nav-link {
+        color: #fff !important;
+      }
+    </style>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+      <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand nav-link" href="/">
+          <strong>18WORLD</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#게시판" rel="nofollow" >게시판</a>
+            </li>
+            {% if session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/mypage" rel="nofollow">마이페이지</a>
+            </li>
+            {%else%}
+            {%endif%}
+            <li class="nav-item" style="position: absolute; left: 82%;">
+              {%if session%}
+              <strong class="nav-link">{{userid[0][0]}}님 환영합니다  |  <a class="logout-form" href="/logout">LOGOUT</a></strong>
+              {%else%}
+              <a class="nav-link" href="/login">
+                <button type="button" style="color:#fff; border:none; background: transparent; margin-left: 150px;">로 그 인</button>
+              </a>
+              {%endif%}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Carousel wrapper -->
+    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
+        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+      </ol>
+
+      <!-- Inner -->
+      <div class="carousel-inner">
+        <!-- Single item -->
+        <div class="carousel-item active">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                <!-- <h1 class="mb-3">로그인</h1> -->
+                
+                <div class="form-outline mb-4">
+                  <!-- <input type="email" id="form3Example3" class="form-control" />
+                  <label class="form-label" for="form3Example3">ID</label> -->
+                </div>
+                <div class="form-outline mb-4">
+                  <!-- <input type="email" id="form3Example3" class="form-control" />
+                  <label class="form-label" for="form3Example3">PWD</label> -->
+                </div>
+
+                <!-- <h5 class="mb-4">Best & free guide of responsive web design</h5> -->
+                <!-- <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com"
+                  role="button" rel="nofollow" target="_blank">회원가입</a>
+                <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com"
+                  target="_blank" role="button">비밀번호 찾기</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single item -->
+        <div class="carousel-item">
+          <div class="mask" style="
+                background: linear-gradient(
+                  45deg,
+                  rgba(29, 236, 197, 0.7),
+                  rgba(91, 14, 214, 0.7) 100%
+                );
+              ">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inner -->
+
+      <!-- Controls -->
+      <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!-- Carousel wrapper -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5">
+    <div class="container">
+      <!--Section: Content-->
+      <!-- <section> -->
+        <!-- <div class="row">
+          <div class="col-md-6 gx-5 mb-4">
+            <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+              <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-6 gx-5 mb-4">
+            <h4><strong>Facilis consequatur eligendi</strong></h4>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+              eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+              sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+            </p>
+            <p><strong>Doloremque vero ex debitis veritatis?</strong></p>
+            <p class="text-muted">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod itaque voluptate
+              nesciunt laborum incidunt. Officia, quam consectetur. Earum eligendi aliquam illum
+              alias, unde optio accusantium soluta, iusto molestiae adipisci et?
+            </p>
+          </div> -->
+        <!-- </div>
+      </section> -->
+      <!--Section: Content-->
+
+      <hr class="my-5" />
+
+      <!--Section: Content-->
+      <section section id = "게시판" class="text-center">
+        <h4 class="mb-5"><strong>게시판</strong></h4>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{url_for('static', filename='images/test1.PNG')}}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">2022년</h5>
+                <p class="card-text">
+                  군백기를 마치고 comback한 화석들
+                </p>
+                <a href="/gesipan" class="btn btn-primary">들어가기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{url_for('static', filename='images/test2.PNG')}}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">2019년</h5>
+                <p class="card-text">
+                  망아지마냥 날뛰던 18
+                </p>
+                <a href="file:///C:/Users/user/Desktop/%EC%9B%B9%ED%95%B4%ED%82%B9%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%95%A4%EB%93%9C/2019%EA%B2%8C%EC%8B%9C%ED%8C%90/2019%EA%B2%8C%EC%8B%9C%ED%8C%90.html" class="btn btn-primary">들어가기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{url_for('static', filename='images/test3.PNG')}}" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">2018년</h5>
+                <p class="card-text">
+                  라떼의 새내기
+                </p>
+                <a href="file:///C:/Users/user/Desktop/%EC%9B%B9%ED%95%B4%ED%82%B9%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%95%A4%EB%93%9C/2018%EA%B2%8C%EC%8B%9C%ED%8C%90/2018%EA%B2%8C%EC%8B%9C%ED%8C%90.html" class="btn btn-primary">들어가기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content-->
+
+      <hr class="my-5" />
+
+
+</body>
+</html>

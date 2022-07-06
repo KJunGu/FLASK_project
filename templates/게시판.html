@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>응답하라 18월드</title>
+
+    <link rel="canonical" href="https://getbootstrap.kr/docs/5.1/examples/album/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<link rel="stylesheet" href="static/css/style.css" />
+<link rel="stylesheet" href="static/css/mdb.min.css" />
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .navbar-brand {
+        margin-left: 3px;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    
+<header>
+  <nav class="nav-box" style="z-index: 2000;">
+    <div class="nav-box">
+        <a class="nav-title" href="/">
+        <strong>18WORLD</strong>
+        </a>
+        <a class="nav-item" href="#게시판" rel="nofollow" >게시판</a>
+        {%if session%}
+        <a class="nav-item" href="" rel="nofollow">마이페이지</a>
+        <strong style="position:absolute; right:1%; color:black; margin-top:3px;">{{userid[0][0]}}님 환영합니다  |  <a class="logout-form" href="/logout">LOGOUT</a></strong>
+        {%else%}
+        <a href="/login">
+          <button type="button" class="nav-login">로 그 인</button>
+        </a>
+        {%endif%}
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">2022년도 게시판</h1>
+        <p class="lead text-muted">18월드에 오신 걸 환영합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for i in range(len_seq) %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../static/images/{{gesi[len_seq-i-1][0]}}.jpeg"><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
+
+            <div class="card-body">
+              <p class="card-text">{{gesi[len_seq-i-1][1]}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="/article/{{len_seq-i}}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" style="color: #6c757d; border-color: #6c757d;">구경하기</button>
+                  </a>
+                </div>
+                <small class="text-muted">{{gesi[len_seq-i-1][3]}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">뒤로 가기</a>
+    </p>
+    {%if session%}
+    <div class="py-4 text-center" style="display: block; margin-left: auto; margin-right: auto;">
+      <a role="button" class="btn btn-primary btn-lg m-2"
+        href="/form" rel="nofollow">
+        게시물 작성
+      </a>
+      <!-- <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
+        Download MDB UI KIT
+      </a> -->
+    </div>
+    {%else%}
+    {%endif%}
+    <p class="mb-1">많이 이용해주세요</p>
+    <p class="mb-0">감사합니다</p>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="offcanvas.js"></script>
+    <script src="static/js/javascript.jsp"></script>
+
+      
+  </body>
+</html>

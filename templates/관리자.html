@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-widty, initial-scale=1">
+        <title>관리자페이지</title>
+        <style>
+          html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, .75);
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-underline .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+
+#navbarSideCollapse {
+    background-color: rgb(196, 65, 196);
+
+}
+
+.navbar-collapse {
+    background-color: white;
+}
+        </style>
+        <link rel="stylesheet" href="static/css/style.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <body>
+          <nav class="nav-box" style="z-index: 2000;">
+            <div class="nav-box">
+                <a class="nav-title" href="/">
+                <strong>18WORLD</strong>
+                </a>
+                <a class="nav-item" href="#게시판" rel="nofollow" >게시판</a>
+                {%if session%}
+                <a class="nav-item" href="" rel="nofollow">마이페이지</a>
+                <strong style="position:absolute; right:1%; color:black; margin-top:3px;">관리자님 환영합니다  |  <a class="logout-form" href="/logout">LOGOUT</a></strong>
+                {%else%}
+                <a href="/login">
+                  <button type="button" class="nav-login">로 그 인</button>
+                </a>
+                {%endif%}
+            </div>
+          </nav>
+
+            <table class="table table-striped table-hover" style="width: 70%; border: 1px solid black; margin-left: auto; margin-right: auto; margin-top: 150px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">이름</th>
+                    <th scope="col">아이디</th>
+                    <th scope="col">비번</th>
+                    <th scope="col">이메일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for i in range(userLen)%}
+                  <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{userInfo[i][2]}}</td>
+                    <td>{{userInfo[i][0]}}</td>
+                    <td>{{userInfo[i][1]}}</td>
+                    <td>{{userInfo[i][3]}}</td>
+                    <td><a href="/userDel/{{i}}">삭제</a></td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+
+        <hr/>
+        <div class="text-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="margin-left: 45%;">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        </body>
+    </head>
+</html>

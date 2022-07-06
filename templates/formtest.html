@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>게시글 추가</title>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+<!-- MDB -->
+<link rel="stylesheet" href="{{url_for('static', filename='css/mdb.min.css')}}" />
+<!-- Custom styles -->
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+</head>
+<body>
+
+    <nav class="nav-box" style="z-index: 2000;">
+        <div class="nav-box">
+            <a class="nav-title" href="/">
+            <strong>18WORLD</strong>
+            </a>
+            <a class="nav-item" href="#게시판" rel="nofollow" >게시판</a>
+            <a class="nav-item" href="" rel="nofollow">마이페이지</a>
+
+            {%if session%}
+            <strong style="position:absolute; right:1%; color:black; margin-top:3px;">{{userid[0][0]}}님 환영합니다  |  <a class="logout-form" href="/logout">LOGOUT</a></strong>
+            {%else%}
+            <a href="/login">
+              <button type="button" class="nav-login">로 그 인</button>
+            </a>
+            {%endif%}
+        </div>
+      </nav>
+<div>
+    
+<div class="content-box">
+    <span class="content-header" title="갤러리 1 페이지">글작성</span>
+  
+<form action="{{url_for('update', uid=uid)}}" method="post" enctype="multipart/form-data" class="write-form">
+    <div class="content-titlebox">
+        <label for="title" class="content-title">제목{{uid}} *</label>
+        <input type="text" name="title" value="" id="wr_subject" required class="content-titleinput" size="50" maxlength="255" placeholder="Please enter a title.">
+    </div>
+<br>
+
+    <div class="content-mainbox">
+        <label for="contents" class="content-title">내용 *</label>
+        <textarea name="contents" class="content-textarea" maxlength="65536" placeholder="Please enter the contents."></textarea>
+    </div>
+
+    <div class="filebox">
+        <input type="file" name="file1" id="file1" required title="파일첨부 1 : 용량 1,048,576 바이트 이하만 업로드 가능">
+        <input type="submit" value="작성완료" class="filebtn">
+    </div>
+    
+</form>
+</div>
+    
+</body>
+</html>
